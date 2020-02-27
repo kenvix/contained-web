@@ -14,7 +14,7 @@ docker pull kenvix/php
 #### Run
 
 ```shell
-docker run -d --name php --net contained --ip 192.168.170.2 kenvix/php
+docker run -d --name php -v PATH_TO_WWW:PATH_TO_WWW --net contained --ip 192.168.170.2 kenvix/php
 ```
 
 ## Network 
