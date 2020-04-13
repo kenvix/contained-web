@@ -1,0 +1,16 @@
+version: '3'
+networks: 
+    default:
+        external: 
+            name: contained
+services: 
+    php:
+        image: kenvix/php:latest
+        container_name: php
+        restart: always
+        volumes: 
+            - /run/php-fpm:/run/php-fpm
+            - /home/wwwroot:/home/wwwroot
+        networks: 
+            default:
+                ipv4_address: 192.168.170.2
