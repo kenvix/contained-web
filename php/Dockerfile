@@ -23,7 +23,5 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 COPY www.conf /etc/php7/php-fpm.d/www.conf
 COPY php.ini /etc/php7/conf.d/99_php_override.ini
 
-EXPOSE 9000
-
 WORKDIR /root
 CMD ["php-fpm7", "-F"]
