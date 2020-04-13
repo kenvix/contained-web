@@ -17,7 +17,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && rm -rf /var/cache/* \
     && rm -rf /usr/share/X11 \
     && rm -rf /tmp/pear \
-    && rm -rf /usr/share/php7
+    && rm -rf /usr/share/php7 \
+    && mkdir /run/php-fpm/
 
 COPY www.conf /etc/php7/php-fpm.d/www.conf
 COPY php.ini /etc/php7/conf.d/99_php_override.ini

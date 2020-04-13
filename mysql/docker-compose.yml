@@ -21,9 +21,7 @@ services:
             - 3306
         volumes: 
             - /home/database/mysql:/var/lib/mysql
-            - /var/run/mysqld:/var/run/mysqld
-        ports: 
-            - 3306:3306
+            - /run/mysqld:/var/run/mysqld
         networks: 
             default:
                 ipv4_address: 192.168.170.3

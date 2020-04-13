@@ -3,7 +3,7 @@
 ## MariaDB
 
 Default running on `192.168.170.3:3306`   
-Unix socket on `/var/run/mysqld/mysqld.sock`
+Unix socket on `/run/mysqld/mysqld.sock`
 
 Data dir `/home/database/mysql`    
 Default password `PASSWORD` user `app`
@@ -11,8 +11,7 @@ Default password `PASSWORD` user `app`
 ## PHP
 Size: 77 MiB
 
-PHP FPM Port: `9000`     
-Default running on `192.168.170.2:9000`   
+PHP-FPM Unix socket on `/run/php-fpm/php-fpm.sock`
 
 #### Pull
 
@@ -23,7 +22,10 @@ docker pull kenvix/php
 #### Run
 
 ```shell
-docker run -d --name php -v PATH_TO_WWW:PATH_TO_WWW --net contained --ip 192.168.170.2 kenvix/php
+mkdir /run/php-fpm
+chown -R root:docker /run/php-fpm
+chmod -R 777 /run/php-fpm
+docker run -d --name php -v PATH_TO_WWW:PATH_TO_WWW --net contained -v /run/php-fpm:/run/php-fpm kenvix/php
 ```
 
 ## Network 
