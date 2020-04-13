@@ -1,0 +1,29 @@
+version: '3'
+networks: 
+    default:
+        external: 
+            name: contained
+services: 
+    mysql:
+        image: mariadb:latest
+        container_name: mysql
+        command:
+            - --default_authentication_plugin=mysql_native_password
+            - --character-set-server=utf8mb4
+            - --collation-server=utf8mb4_unicode_ci    
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: PASSWORD
+            MYSQL_DATABASE: app
+            MYSQL_USER: app
+            MYSQL_PASSWORD: PASSWORD
+        expose: 
+            - 3306
+        volumes: 
+            - /home/database/mysql:/var/lib/mysql
+            - /var/run/mysqld:/var/run/mysqld
+        ports: 
+            - 3306:3306
+        networks: 
+            default:
+                ipv4_address: 192.168.170.3
