@@ -28,6 +28,12 @@ chmod -R 777 /run/php-fpm
 docker run -d --name php -v PATH_TO_WWW:PATH_TO_WWW --net contained -v /run/php-fpm:/run/php-fpm kenvix/php
 ```
 
+## Nginx(Tengine)
+
+Based on axizdkr/tengine
+
+IT USES HOST NETWORK.
+
 ## Network 
 
 ```shell

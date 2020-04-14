@@ -1,0 +1,9 @@
+version: '3'
+services: 
+    nginx:
+        image: axizdkr/tengine
+        container_name: nginx
+        restart: always
+        volumes: 
+            - /home/config/nginx/:/etc/nginx
+        network_mode: host
