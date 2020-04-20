@@ -9,10 +9,14 @@ services:
         container_name: mongo
         command: --auth --unixSocketPrefix /dev/shm --filePermissions 0777
         restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: PASSWORD
         expose: 
             - 27017
         volumes: 
-            - /home/database/mongo:/data
+            - /home/database/mongo/configdb:/data/configdb
+            - /home/database/mongo/db:/data/db
             - /run/mongo:/dev/shm
             - /home/log/mongo:/var/log/mongodb
         networks: 

@@ -1,12 +1,20 @@
 # Kenvix Contained web serivces
 
-## MariaDB
+## MySQL(MariaDB)
 
 Default running on `192.168.170.3:3306`   
 Unix socket on `/run/mysqld/mysqld.sock`
 
 Data dir `/home/database/mysql`    
-Default password `PASSWORD` user `app`
+Default password `PASSWORD` user `app` and `root`
+
+## MongoDB
+
+Default running on `192.168.170.4:27017`   
+Unix socket on `/run/mongo/mongodb-27017.sock`
+
+Data dir `/home/database/mongo`    
+Default password `PASSWORD` user `root`
 
 ## PHP
 Size: 77 MiB
