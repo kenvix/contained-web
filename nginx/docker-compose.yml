@@ -5,5 +5,7 @@ services:
         container_name: nginx
         restart: always
         volumes: 
-            - /home/config/nginx/:/etc/nginx
+            - /home/config/nginx:/etc/nginx
+            - /home/AutoCert/data/acme:/home/AutoCert/data/acme
+            - /home/log/nginx:/var/log/nginx
         network_mode: host
