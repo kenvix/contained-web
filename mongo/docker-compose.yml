@@ -1,0 +1,20 @@
+version: '3'
+networks: 
+    default:
+        external: 
+            name: contained
+services: 
+    mongo:
+        image: mongo:latest
+        container_name: mongo
+        command: --auth --unixSocketPrefix /dev/shm --filePermissions 0777
+        restart: always
+        expose: 
+            - 27017
+        volumes: 
+            - /home/database/mongo:/data
+            - /run/mongo:/dev/shm
+            - /home/log/mongo:/var/log/mongodb
+        networks: 
+            default:
+                ipv4_address: 192.168.170.4
