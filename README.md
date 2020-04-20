@@ -40,7 +40,11 @@ docker run -d --name php -v PATH_TO_WWW:PATH_TO_WWW --net contained -v /run/php-
 
 Based on axizdkr/tengine
 
-IT USES HOST NETWORK.
+Config files in `/home/config/nginx`       
+Log files in `/home/log/nginx` if you write logs file to `/var/log/nginx`     
+It supports my AutoCert if you put autocert files in `/home/AutoCert`     
+
+It uses HOST network.
 
 ## Network 
 
