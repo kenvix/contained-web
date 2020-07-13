@@ -8,4 +8,5 @@ services:
             - /home/config/nginx:/etc/nginx
             - /home/AutoCert/data/acme:/home/AutoCert/data/acme
             - /home/log/nginx:/var/log/nginx
+            - /home/wwwroot:/home/wwwroot
         network_mode: host
