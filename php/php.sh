@@ -1,1 +1,1 @@
-docker exec -it php php $*
+docker exec -it php cd "$(pwd)" && php $*

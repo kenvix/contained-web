@@ -1,16 +1,25 @@
 FROM alpine:3.11.3
 LABEL maintainer="kenvix <i@kenvix.com>"
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-    && apk --no-cache add php7 php7-dev php7-pear php7-openssl openssl-dev g++ make \
+# sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+
+RUN apk --no-cache add php7 php7-dev php7-pear php7-openssl openssl-dev g++ make \
     && apk --no-cache add php7-fpm php7-mysqli php7-json php7-curl php7-bz2 php7-ftp \
         php7-zlib php7-xml php7-phar php7-intl php7-dom php7-xmlreader php7-ctype \
         php7-mbstring php7-gd php7-bcmath php7-tokenizer php7-fileinfo php7-xmlwriter php7-iconv \
         php7-opcache php7-mysqlnd php7-pdo php7-pdo_mysql php7-pecl-redis \
     && pecl install mongodb \
     && pecl install apcu \
+    && pecl install redis \
+    && echo 'Extensions ok ...' \ 
     && echo 'extension=mongodb.so' > /etc/php7/conf.d/01_mongodb.ini \
     && echo 'extension=apcu.so' > /etc/php7/conf.d/01_apcu.ini \
+    && echo 'extension=redis.so' > /etc/php7/conf.d/01_redis.ini \
+    && echo 'Installing composer ...' \ 
+    && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php -r "if (hash_file('sha384', 'composer-setup.php') === 'e5325b19b381bfd88ce90a5ddb7823406b2a38cff6bb704b0acc289a09c8128d4a8ce2bbafcd1fcbdc38666422fe2806') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
+    && php composer-setup.php --install-dir=bin \
+    && php -r "unlink('composer-setup.php');" \
     && echo Cleaning up... \
     && apk del g++ make \
     && apk del *-dev \
