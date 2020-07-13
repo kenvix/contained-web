@@ -11,9 +11,11 @@ RUN apk --no-cache add php7 php7-dev php7-pear php7-openssl openssl-dev g++ make
     && pecl install mongodb \
     && pecl install apcu \
     && pecl install redis \
+    && echo Extension installed ... \
     && echo 'extension=mongodb.so' > /etc/php7/conf.d/01_mongodb.ini \
     && echo 'extension=apcu.so' > /etc/php7/conf.d/01_apcu.ini \
     && echo 'extension=redis.so' > /etc/php7/conf.d/01_redis.ini \
+    && echo Installing Composer ... \
     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "if (hash_file('sha384', 'composer-setup.php') === 'e5325b19b381bfd88ce90a5ddb7823406b2a38cff6bb704b0acc289a09c8128d4a8ce2bbafcd1fcbdc38666422fe2806') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
     && php composer-setup.php --install-dir=bin \
