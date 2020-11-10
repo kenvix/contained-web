@@ -20,7 +20,6 @@ services:
             - 3306
         volumes: 
             - /home/database/mysql:/var/lib/mysql
-            - /run/mysqld:/var/run/mysqld
             - /home/log/mysql:/var/log/mysql
         networks: 
             default:
