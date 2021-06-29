@@ -1,0 +1,32 @@
+# This is a sample docker-compose file that can be used to run Joplin Server
+# along with a PostgreSQL server.
+#
+# All environment variables are optional. If you don't set them, you will get a
+# warning from docker-compose, however the app should use working defaults.
+
+version: '2'
+
+networks: 
+    default:
+        external: 
+             name: contained
+
+services:
+    app:
+        image: joplin/server:latest
+        container_name: joplin
+        expose: 
+            - 22300
+        restart: unless-stopped
+        environment:
+            - APP_BASE_URL=https://
+            - DB_CLIENT=pg
+            - POSTGRES_PASSWORD=
+            - POSTGRES_DATABASE=joplin
+            - POSTGRES_USER=joplin
+            - POSTGRES_PORT=5432
+            - POSTGRES_HOST=192.168.170.5
+        networks: 
+            default:
+                ipv4_address: 192.168.170.12
+        

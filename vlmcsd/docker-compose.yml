@@ -1,0 +1,17 @@
+version: '3'
+networks: 
+    default:
+        external: 
+            name: contained
+services: 
+    vlmcsd:
+        image: mikolatero/vlmcsd:latest
+        container_name: vlmcsd
+        restart: always
+        ports: 
+            - 1688:1688
+        expose: 
+            - 1688
+        networks: 
+            default:
+                ipv4_address: 192.168.170.9

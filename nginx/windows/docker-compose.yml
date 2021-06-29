@@ -1,0 +1,11 @@
+version: '3'
+services: 
+    nginx:
+        image: axizdkr/tengine
+        container_name: nginx
+        restart: always
+        volumes: 
+            - C:/LX/nginx/conf:/etc/nginx
+            - C:/LX/nginx/log:/var/log/nginx
+            - C:/Work-Station/Web Projects:/home/wwwroot
+        network_mode: host

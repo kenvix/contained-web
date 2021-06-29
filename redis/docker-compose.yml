@@ -1,0 +1,18 @@
+version: '2'
+networks: 
+    default:
+        external: 
+            name: contained
+services: 
+    redis:
+        image: redis:latest
+        container_name: redis
+        restart: always
+        tty: true
+        volumes: 
+            - /home/database/redis:/data
+            - /home/config/redis/redis.conf:/etc/redis/redis.conf:ro
+        command: redis-server /etc/redis/redis.conf 
+        networks: 
+            default:
+                ipv4_address: 192.168.170.6

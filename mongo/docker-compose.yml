@@ -17,7 +17,6 @@ services:
         volumes: 
             - /home/database/mongo/configdb:/data/configdb
             - /home/database/mongo/db:/data/db
-            - /run/mongo:/dev/shm
             - /home/log/mongo:/var/log/mongodb
         networks: 
             default:
