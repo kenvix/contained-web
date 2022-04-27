@@ -6,11 +6,11 @@ ENV LANG=zh_CN.UTF-8 \
     PS1="\u@\h:\w \$ "
 
 RUN apk update \
-    && apk --no-cache add php8 php8-dev php8-pear php8-openssl openssl-dev g++ make \
+    && apk --no-cache add php8 php8-dev php8-pear php8-openssl openssl-dev tzdata curl tar g++ make \
     && apk --no-cache add php8-fpm php8-mysqli php8-json php8-curl php8-bz2 php8-ftp \
         php8-zlib php8-zip php8-xml php8-phar php8-intl php8-dom php8-xmlreader php8-ctype \
         php8-mbstring php8-gd php8-bcmath php8-tokenizer php8-fileinfo php8-xmlwriter php8-iconv \
-        php8-opcache php8-mysqlnd php8-pdo php8-pdo_mysql php8-pecl-redis \
+        php8-opcache php8-mysqlnd php8-pdo php8-pdo_mysql php8-pecl-redis  \
     && ln /usr/bin/pear8 /usr/bin/pear \
     && ln /usr/bin/peardev8 /usr/bin/peardev \
     && ln /usr/bin/pecl8 /usr/bin/pecl \
