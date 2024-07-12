@@ -1,3 +1,5 @@
+docker pull axizdkr/tengine
+
 if [ ! -d /home/config/nginx ];then
   if [ ! -d /home/config ];then
     mkdir -p /home/config
@@ -6,4 +8,6 @@ if [ ! -d /home/config/nginx ];then
   chown -R root:docker /home/config/nginx
   chmod -R 644 /home/config/nginx
 fi
+
+docker-compose down || true
 docker-compose up -d

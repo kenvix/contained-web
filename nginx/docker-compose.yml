@@ -4,6 +4,8 @@ services:
         image: axizdkr/tengine
         container_name: nginx
         restart: always
+        environment:
+            TZ: Asia/Shanghai
         volumes: 
             - /home/config/nginx:/etc/nginx
             - /home/AutoCert/data/acme:/home/AutoCert/data/acme
